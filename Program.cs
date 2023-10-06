@@ -1,7 +1,14 @@
+using Microsoft.AspNetCore.HttpsPolicy;
+using System.Net;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient("swapi", client =>
+{
+    client.BaseAddress = new Uri("https://swapi.dev/api/");
+});
 
 var app = builder.Build();
 
@@ -14,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -25,3 +33,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
