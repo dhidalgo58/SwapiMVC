@@ -16,7 +16,8 @@ namespace SwapiMVC.Models
         public string BirthYear { get; set; }
         [JsonPropertyName("url")]
         public string Url { get; set; }
-        public string id 
+
+        public string Id 
         { 
             get 
             {
